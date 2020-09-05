@@ -31,7 +31,7 @@ Techniques already implemented:
 
 ## 7. Deflickering
 
-
+- Libraries based on ffmpeg, without AI.
 
 ## 8. Stabilizer
 
