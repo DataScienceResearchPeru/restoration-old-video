@@ -1,0 +1,55 @@
+
+
+# Archivos específicos
+.vscode/settings.json
+.vscode/launch.json
+
+
+# Installer logs 
+pip-log.txt 
+pip-delete-this-directory.txt 
+
+# Unit test / coverage reports 
+htmlcov/ 
+.tox/ 
+.coverage 
+.coverage.* 
+.cache 
+.pytest_cache/ 
+nosetests.xml 
+coverage.xml 
+*.cover 
+.hypothesis/ 
+
+
+
+# Environments 
+.env 
+.venv 
+env/ 
+venv/ 
+ENV/ 
+env.bak/ 
+venv.bak/ 
+
+*.pyc 
+# mypy 
+.mypy_cache/ 
+
+
+# Visual Studio Code # 
+.vscode/*
+*.pyc
+
+!__pycache__/
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history
+
+.vscode/
+
+
+# Notebooks
+*.ipynb 

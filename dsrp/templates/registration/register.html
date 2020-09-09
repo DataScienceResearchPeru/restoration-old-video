@@ -1,0 +1,35 @@
+{% extends 'registration/base.html' %}
+
+{% block cabecera %}
+{% endblock cabecera %}
+
+
+{% block contenido %}
+
+<div class="card">
+	<div class="card-body">
+        <p class="login-box-msg">Registrarme </p>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+		<form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="col-4 mx-auto">
+                <button type="submit" style="background-color:white;color:#691e99;border-color: #691e99;font-size: small;"
+                    class="btn btn-primary btn-block">Registrarme</button>
+            </div>
+		</form>
+		<!-- /.login-card-body -->
+	</div>
+</div>
+<!-- /.login-box -->
+
+{% endblock contenido %}
+
+{% block scripts %}
+{% endblock scripts %}
