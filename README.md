@@ -88,13 +88,6 @@ Techniques already implemented:
 
 [Content]
 
-<!-- Our users can: -->
-## Our users can:
-
-- `If is an administrative`: `[Content]`
-- `If is a normal user`: `[Content]`
-- `If is a mantainer`: `[Content]`
-
 <!-- ROADMAP -->
 ## Roadmap
 
