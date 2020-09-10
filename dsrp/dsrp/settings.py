@@ -98,15 +98,15 @@ WSGI_APPLICATION = 'dsrp.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'django',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'postgres',
-    #     'HOST': 'x',
-    #     'PORT': 'x',
-    # },
-    'default': { #sqlite
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dabgr417fji4fp',
+        'USER': 'eefjhsmgczjuuo',
+        'PASSWORD': '8b4b4a96d5fa6cb887425cfea33de91650508766b814eed31b9c079a4ec20d57',
+        'HOST': 'ec2-54-172-173-58.compute-1.amazonaws.com',
+        'PORT': '5432',
+    },
+    'sqlite': { #sqlite
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
