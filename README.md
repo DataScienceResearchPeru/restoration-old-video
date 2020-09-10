@@ -1,4 +1,4 @@
-# ROVDSRP
+# ROVDSRP v1.0
 
 [![Build Status](https://travis-ci.com/ZurMaD/pdm.svg?branch=master)](https://travis-ci.com/ZurMaD/pdm)
 
@@ -9,7 +9,7 @@
     <img src="/docs/img/logo.png">
   </a>
 
-  <h3 align="center">ROVDSRP<br>
+  <h3 align="center">ROVDSRP v1.0<br>
   Restoration Old Videos Data Science Research Perú</h3>
 
   <p align="center">
