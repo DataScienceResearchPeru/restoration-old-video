@@ -74,6 +74,8 @@ Techniques already implemented:
 
 ### 9. Facial reconstruction
 
+- https://github.com/csxmli2016/DFDNet
+
 ### 10. Improve speech on audio
 
 
