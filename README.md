@@ -1,6 +1,6 @@
 # ROVDSRP v1.0
 
-[![Build Status](https://travis-ci.com/ZurMaD/pdm.svg?branch=master)](https://travis-ci.com/ZurMaD/pdm)
+[![Build Status](https://travis-ci.com/ZurMaD/dsrp.svg?branch=master)](https://travis-ci.com/ZurMaD/dsrp)
 
 
 <br />
