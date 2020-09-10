@@ -72,7 +72,7 @@ Techniques already implemented:
 
 ### 8. Stabilizer
 
-### 9. Facial reconstruction
+### 9. Face restoration
 
 - https://github.com/csxmli2016/DFDNet
 
