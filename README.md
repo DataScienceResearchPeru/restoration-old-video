@@ -1,6 +1,6 @@
 # ROVDSRP v1.0
 
-[![Build Status](https://travis-ci.com/ZurMaD/dsrp.svg?branch=master)](https://travis-ci.com/ZurMaD/dsrp)
+[![Build Status](https://travis-ci.org/ZurMaD/restoration-old-video.svg?branch=master)](https://travis-ci.org/ZurMaD/restoration-old-video)
 
 
 <br />
