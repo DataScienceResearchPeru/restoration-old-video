@@ -28,7 +28,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-* [What is MedicPUCP?](#what-is)
+* [What is ROVDSRP?](#what-is)
 * [How it works?](#how-works)
 * [Our users can:](#our-users)
 * [Roadmap](#roadmap)
@@ -79,8 +79,8 @@ Techniques already implemented:
 ### 10. Improve speech on audio
 
 
-<!-- What is MedicPUCP? -->
-## What is MedicPUCP?
+<!-- What is ROVDSRP? -->
+## What is ROVDSRP?
 
 
 <!-- How it works? -->
