@@ -180,7 +180,7 @@ nav a {
 .menu li a.active,
 nav a:hover,
 nav ul ul li a:hover {
-    color: #05b993;
+    color: #b98005;
 }
 
 /* Hide Dropdowns by Default
@@ -481,7 +481,7 @@ li>a:only-child:after {
 }
 
 .search-w3layouts button {
-    background: #05b993;
+    background: #b98005;
     color: #fff;
     border: none;
     font-size: 14px;
@@ -569,7 +569,7 @@ h3.w3ls_pvt-title span {
     -ms-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    background-color: #05b993;
+    background-color: #b98005;
 }
 
 .button-style:hover {
@@ -683,7 +683,7 @@ a.button-w3ls {
 }
 
 .about-right-faq h6 {
-    color: rgb(5, 185, 147);
+    color: #b98005;
     letter-spacing: 2px;
     margin-bottom: 8px;
     font-size: 15px;
@@ -758,7 +758,7 @@ p.sub-tittle {
 /* footer */
 /* email icon style */
 .icon-effect-w3 {
-    background: #05b993;
+    background: #b98005;
     width: 70px;
     height: 70px;
     -webkit-border-radius: 50%;
@@ -843,7 +843,7 @@ form.subscribe-wthree button {
 /* //social icons */
 /* bottom-to-top */
 a.move-top span {
-    color: #05b993;
+    color: #b98005;
     font-size: 30px;
 }
 
@@ -955,11 +955,11 @@ li.breadcrumb-item {
 }
 
 .icon-clr4 {
-    color: #0ca799;
+    color: #c58715;
 }
 
 .icon-clr5 {
-    color: #39dcb1;
+    color: #c58715;
 }
 
 .icon-clr6 {
