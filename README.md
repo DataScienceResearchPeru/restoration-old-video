@@ -6,7 +6,7 @@
 <br />
 <p align="center">
   <a href="#">
-    <img src="/docs/img/logo.png">
+    <img src="/assets/logo.png">
   </a>
 
   <h3 align="center">ROVDSRP v1.0<br>
