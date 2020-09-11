@@ -1,6 +1,6 @@
-# MedicPUCP - Web
+# ROVDSRP v1.0
 
-[![Build Status](https://travis-ci.com/ZurMaD/pdm.svg?branch=master)](https://travis-ci.com/ZurMaD/pdm)
+[![Build Status](https://travis-ci.com/ZurMaD/dsrp.svg?branch=master)](https://travis-ci.com/ZurMaD/dsrp)
 
 
 <br />
@@ -9,12 +9,12 @@
     <img src="/docs/img/logo.png">
   </a>
 
-  <h3 align="center">ROVDSRP<br>
+  <h3 align="center">ROVDSRP v1.0<br>
   Restoration Old Videos Data Science Research Perú</h3>
 
   <p align="center">
     <br />
-    <a href="#">View Demo</a>
+    <a href="https://rovdsrp.herokuapp.com/">View Demo</a>
     ·
     <a href="#">Report Bug</a>
     ·

@@ -1,1 +1,1 @@
-web: gunicorn --chdir pdm dsrp.wsgi:application --log-file -
+web: gunicorn --chdir dsrp dsrp.wsgi:application --log-file -
