@@ -1,4 +1,5 @@
 {% load static %}
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,38 +8,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="es">
 
 <head>
-	<title>Startup a Corporate Category Bootstrap Responsive Website Template | Home :: W3layouts</title>
+	<title>Restauración Videos - DSRP</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
-	<meta name="keywords" content="Startup Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+	<meta name="keywords"
+		content="Página dedicada a la restauración de videos usando técnicas open-source de deep-learning. Sube tu video a la plataforma, espera unas horas y listo!, tendrás tu video restaurado." />
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
 	<!-- //Meta tag Keywords -->
 
 	<!-- Custom-Files -->
-	<link rel="stylesheet" href=" {% static '1/css/bootstrap.css' %}">
+
 	<!-- Bootstrap-Core-CSS -->
-	<link rel="stylesheet" href=" {% static '1/css/style.css' %}" type="text/css" media="all" />
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+	</script>
+
 	<!-- Style-CSS -->
-	<link href=" {% static '1/css/font-awesome.min.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static '1/plugins/style.css' %}" type="text/css" media="all" />
 	<!-- Font-Awesome-Icons-CSS -->
+	<script src="https://kit.fontawesome.com/11f42b3956.js" crossorigin="anonymous"></script>
 	<!-- //Custom-Files -->
 
 	<!-- Web-Fonts -->
-	<link href="1///fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
-	 rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext"
+		rel="stylesheet">
 	<!-- //Web-Fonts -->
+
+	<!-- Video -->
+
+	<!-- End video -->
 </head>
 
 <body>
@@ -50,7 +62,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
 					<!-- logo -->
 					<div id="logo">
-						<h1><a href="#"><span class="fa fa-cloud-download mr-2"></span>RVA</a></h1>
+						<h1><a href="#">RVA<span class="fa fa-video"></span>DSRP</a></h1>
 					</div>
 					<!-- //logo -->
 					<!-- nav -->
@@ -59,9 +71,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<label for="drop" class="toggle">Menu</label>
 							<input type="checkbox" id="drop" />
 							<ul class="menu">
-								<li><a href=" {% static '1/index.html' %}" class="active">Inicio</a></li>
+								<li><a href="#index" class="active">Inicio</a></li>
 								<li><a href="https://www.datascience.pe/">Nosotros</a></li>
-								<li><a href=" {% static '1/pricing.html' %}">Planes</a></li>
+								<!-- <li><a href="#pricing">Planes</a></li> -->
 								<!-- First Tier Drop Down -->
 								<!-- <li>
 									
@@ -79,24 +91,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<li><a href=" {% static '1/#partners' %}" class="drop-text">Partners</a></li>
 									</ul>
 								</li> -->
-								<li><a href="#">Contáctanos</a></li>
+								<!-- <li><a href="#">Contáctanos</a></li> -->
 							</ul>
 						</nav>
 					</div>
 					<!-- //nav -->
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 						<!-- search -->
+
+						<!-- 
 						<div class="search-w3layouts mr-3">
 							<form action="#" method="post" class="search-bottom-wthree d-flex">
 								<input class="search" type="search" placeholder="Buscar aquí..." required="">
-								<button class="form-control btn" type="submit"><span class="fa fa-search"></span></button>
+								<button class="form-control btn" type="submit"><i class="fas fa-search"></i></button>
 							</form>
 						</div>
+						-->
+
 						<!-- //search -->
 						<!-- download -->
+						<!-- 	
 						<a class="dwn-w3ls btn" href='#' target="_blank">
 							<span class="fa fa-cloud-download"></span>
 						</a>
+						 -->
 						<!-- //download -->
 					</div>
 				</div>
@@ -106,18 +124,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		<!-- banner -->
 		<div class="banner_w3lspvt position-relative">
-			<div class="container">
-				<div class="d-md-flex">
-					<div class="w3ls_banner_txt">
-						<h3 class="w3ls_pvt-title">Restauración de<br><span>Videos Antiguos con IA</span></h3>
-						<p class="text-sty-banner">Empleamos técnicas de inteligencia artificial relacionadas al campo del Deep Learning de los últimos 3 años para brindar un resultado excelente.</p>
-						<a href=" {% static '1/about.html' %}" class="btn button-style mt-md-5 mt-4">Leer documentación</a>
-					</div>
-					<div class="banner-img">
-						<img src=" {% static '1/images/banner.png' %}" alt="" class="img-fluid">
+			<div class="my-container">
+				<div class="my-video">
+					<div class="my-overlay"></div>
+					<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+						<source src="{% static '1/video/background2.mp4' %}" type="video/mp4">
+					</video>
+					<div class="my-container h-100">
+						<div class="d-flex h-100 text-center align-items-center">
+							<div class="w-100 text-white">
+								<div class="w3ls_banner_txt2">
+									<h3 class="w3ls_pvt-title">Restauración de<br><span>Videos Antiguos <i class="fas fa-photo-video"></i> <p></p>con Inteligencia Artificial</span></h3>
+									
+									<!-- <a href="#" class="btn button-style mt-md-5 mt-4">Leer
+										documentación</a> -->
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+			<!-- <div class="container">
+				<div class="d-md-flex">
+					<div class="w3ls_banner_txt2">
+						<h3 class="w3ls_pvt-title">Restauración de<br> <span>Videos Antiguos <i class="fas fa-photo-video"></i> con Inteligencia Artificial</span></h3>
+						<p class="text-sty-banner">Empleamos técnicas de inteligencia artificial relacionadas al campo
+							del Deep Learning de los últimos 3 años para brindar un resultado excelente.</p>
+						<a href=" {% static '1/about.html' %}" class="btn button-style mt-md-5 mt-4">Leer
+							documentación</a>
+					</div>
+				</div>
+			</div> -->
 			<!-- animations effects -->
 			<div class="icon-effects-w3l">
 				<img src=" {% static '1/images/shape1.png' %}" alt="" class="img-fluid shape-wthree shape-w3-one">
@@ -134,6 +171,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //main banner -->
 
 	<!-- what we do section -->
+	<!-- 
 	<div class="what bg-li py-5" id="what">
 		<div class="container py-xl-5 py-lg-3">
 			<div class="row about-bottom-w3l text-center mt-4">
@@ -141,16 +179,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="about-grid-main">
 						<img src=" {% static '1/images/img1.png' %}" alt="" class="img-fluid">
 						<h4 class="my-4">Simple de usar</h4>
-						<p> En menos de 10 minutos puedes configurar el resultado deseado y dejar el video procesando en la plataforma.</p>
-						<a href=" {% static '1/about.html" class="button-w3ls btn mt-sm-5 mt-4">Leer más</a>
+						<p> En menos de 10 minutos puedes configurar el resultado deseado y dejar el video procesando en
+							la plataforma.</p>
+						<a href="#about" class="button-w3ls btn mt-sm-5 mt-4">Leer más</a>
 					</div>
 				</div>
 				<div class="col-lg-4 about-grid my-lg-0 my-5">
 					<div class="about-grid-main">
 						<img src=" {% static '1/images/img2.png' %}" alt="" class="img-fluid">
-						<h4 class="my-4">Conse Tetur</h4>
-						<p>Ut enim ad minim veniam, quis nostrud.Excepteur sint occaecat cupidatat non proident</p>
-						<a href=" {% static '1/about.html' %}" class="button-w3ls btn mt-sm-5 mt-4">Leer más</a>
+							<h4 class="my-4">Conse Tetur</h4>
+							<p>Ut enim ad minim veniam, quis nostrud.Excepteur sint occaecat cupidatat non proident</p>
+							<a href="#about" class="button-w3ls btn mt-sm-5 mt-4">Leer más</a>
 					</div>
 				</div>
 				<div class="col-lg-4 about-grid">
@@ -158,46 +197,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<img src=" {% static '1/images/img3.png' %}" alt="" class="img-fluid">
 						<h4 class="my-4">Adip Cing</h4>
 						<p>Ut enim ad minim veniam, quis nostrud.Excepteur sint occaecat cupidatat non proident</p>
-						<a href=" {% static '1/about.html' %}" class="button-w3ls btn mt-sm-5 mt-4">Leer más</a>
+						<a href="#about" class="button-w3ls btn mt-sm-5 mt-4">Leer más</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
+	-->
 	<!-- //what we do section -->
-
-	<!-- middle -->
-	<section class="midd-w3 py-5" id="faq">
-		<div class="container py-xl-5 py-lg-3">
-			<div class="row">
-				<div class="col-lg-6 about-right-faq">
-					<h6>DSRP</h6>
-					<h3 class="text-da">2 años de investigación</h3>
-					<p class="mt-4">Integer pulvinar leo id viverra feugiat. Pellen tesque libero ut justo,
-						ultrices in ligula. Semper at tempufddfel, ultrices in ligula.</p>
-					<ul class="w3l-right-book mt-4">
-						<li>Marketing Base</li>
-						<li>Financial Consulting</li>
-						<li>Investment Advice</li>
-						<li>Business Growth</li>
-						<li>Technical Support</li>
-					</ul>
-					<a href=" {% static '1/about.html' %}" class="btn button-style button-style-2 mt-sm-5 mt-4">Leer más</a>
-				</div>
-				<div class="col-lg-6 left-wthree-img text-right">
-					<img src=" {% static '1/images/b1.png' %}" alt="" class="img-fluid mt-5" />
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- //middle -->
 
 	<!-- services -->
 	<section class="banner-bottom-w3layouts bg-li py-5" id="services">
 		<div class="container py-xl-5 py-lg-3">
-			<h3 class="tittle text-center font-weight-bold">Our Services</h3>
-			<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">Sed do eiusmod tempor incididunt ut labore et dolore magna
-				aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+			<h3 class="tittle text-center font-weight-bold">Nuestros servicios</h3>
+			<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">Optimiza tus videos antiguos, aumenta las dimensiones mejorando la calidad, coloriza tus videos, aumenta los frames de un video y mucho más. Apoya a DSRP.</p>
 			<div class="row pt-lg-4">
 				<div class="col-lg-4 about-in text-center">
 					<div class="card">
@@ -205,8 +218,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="bg-clr-w3l">
 								<span class="fa fa-line-chart"></span>
 							</div>
-							<h5 class="card-title mt-4 mb-3">Business Growth</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+							<h5 class="card-title mt-4 mb-3">Hasta x8 en dimensiones</h5>
+							<p class="card-text">De 360p a 4k con los últimos algoritmos acreditados en conferencias internacionales.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -216,8 +230,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="bg-clr-w3l">
 								<span class="fa fa-usd"></span>
 							</div>
-							<h5 class="card-title mt-4 mb-3">Financial Planning</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+							<h5 class="card-title mt-4 mb-3">Precio fijo</h5>
+							<p class="card-text">Calculamos el costo de procesar el video según los algoritmos que se aplicarán. El precio se basa en la duración del video original multiplicado por un precio por algoritmo y un descuento inteligente.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -227,8 +242,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="bg-clr-w3l">
 								<span class="fa fa-lightbulb-o"></span>
 							</div>
-							<h5 class="card-title mt-4 mb-3">Business Services</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+							<h5 class="card-title mt-4 mb-3">Basado en resultados</h5>
+							<p class="card-text">Puedes obtener una previsualización de algunos fotogramas.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -237,7 +253,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</section>
 	<!-- //services -->
 
+	<!-- middle -->
+	<section class="midd-w3 py-5" id="faq">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="row">
+				<div class="col-lg-6 about-right-faq">
+					<h6>DSRP</h6>
+					<h3 class="text-da">2 años de investigación</h3>
+					<p class="mt-4">[Descripción]</p>
+					<ul class="w3l-right-book mt-4">
+						<li>[-] Punto 1</li>
+						<li>[-] Punto 2</li>
+						<li>[-] Punto 3</li>
+						<li>[-] Punto 4</li>
+						<li>[-] Punto 5</li>
+					</ul>
+					<a href="#about" class="btn button-style button-style-2 mt-sm-5 mt-4">Leer
+						más</a>
+				</div>
+				<div class="col-lg-6 left-wthree-img text-right">
+					<img src=" {% static '1/images/b1.png' %}" alt="" class="img-fluid mt-5" />
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- //middle -->
+
+
+
 	<!-- stats -->
+	<!-- 
 	<section class="bottom-count py-5" id="stats">
 		<div class="container py-xl-5 py-lg-3">
 			<div class="row">
@@ -282,32 +327,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</section>
+	 -->
 	<!-- //stats -->
 
 	<!-- partners -->
 	<section class="partners py-5" id="partners">
 		<div class="container py-xl-5 py-lg-3">
 			<h3 class="tittle text-center font-weight-bold">Nuestros aliados</h3>
-			<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">Nos complace anunciar alianzas con diversas empresas:</p>
+			<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">Nos complace anunciar alianzas con diversas empresas:
+			</p>
 			<div class="row grid-part text-center pt-4">
-				<div class="col-md-2 col-4">
+				<div class="col-md-4 col-4">
 					<div class="parts-w3ls">
-						<a href="#"><span class="fa fa-angellist"></span></a>
+						<a href="#"><span class="far fa-building"></span></a>
 						<h4>IBM Perú</h4>
 					</div>
 				</div>
-				<div class="col-md-2 col-4">
+				<div class="col-md-4 col-4">
 					<div class="parts-w3ls">
-						<a href="#"><span class="fa fa-opencart"></span></a>
-						<h4>opencart</h4>
+						<a href="#"><span class="far fa-building"></span></a>
+						<h4>ARCHI</h4>
 					</div>
 				</div>
-				<div class="col-md-2 col-4">
+				<div class="col-md-4 col-4">
 					<div class="parts-w3ls">
-						<a href="#"><span class="fa fa-lastfm"></span></a>
+						<a href="#"><span class="far fa-building"></span></a>
 						<h4>lastfm</h4>
 					</div>
 				</div>
+				<!-- 
 				<div class="col-md-2 col-4 mt-md-0 mt-4">
 					<div class="parts-w3ls">
 						<a href="#"><span class="fa fa-openid"></span></a>
@@ -325,7 +373,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<a href="#"><span class="fa fa-ravelry"></span></a>
 						<h4>ravelry</h4>
 					</div>
-				</div>
+				</div> 
+				-->
 			</div>
 		</div>
 	</section>
@@ -340,11 +389,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<span class="fa fa-envelope"></span>
 				</div>
 				<h2 class="tittle text-center font-weight-bold">Mantente al día!</h2>
-				<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">En el campo de la inteligencia artificial los cambios son cada vez más frecuentes, registra tu correo aquí debajo para estar al tanto de nuestra plataforma.</p>
+				<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">En el campo de la inteligencia artificial los
+					cambios son cada vez más frecuentes, registra tu correo aquí debajo para estar al tanto de nuestra
+					plataforma.</p>
 				<form action="#" method="post" class="subscribe-wthree pt-2">
 					<div class="d-flex subscribe-wthree-field">
-						<input class="form-control" type="email" placeholder="Ingresa tu correo" name="email" required="">
-						<button class="btn form-control w-50" type="submit">Subscribe</button>
+						<input class="form-control" type="email" placeholder="Ingresa tu correo" name="email"
+							required="">
+						<button class="btn form-control w-50" type="submit">Quiero recibir actualizaciones!</button>
 					</div>
 				</form>
 			</div>
@@ -370,7 +422,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</a>
 						</li>
 						<li>
-							<a href=" {% static '1/#"' %}">
+							<a href="#">
 								<span class="fa fa-google-plus"></span>
 							</a>
 						</li>
@@ -384,13 +436,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- //footer social icons -->
 				<!-- copyright -->
 				<div class="copy_right mx-md-auto mb-md-0 mb-3">
-					<p class="text-bl let">© 2019 Startup. All rights reserved | Design by
-						<a href='1/http://w3layouts.com/' target="_blank">W3layouts</a>
+					<p class="text-bl let">© 2020 ROV - DSRP | Design by <a href='http://w3layouts.com/'
+							target="_blank">W3layouts</a>
 					</p>
 				</div>
 				<!-- //copyright -->
 				<!-- move top icon -->
-				<a href=" {% static '1/#home' %}" class="move-top text-center">
+				<a href="#home" class="move-top text-center">
 					<span class="fa fa-level-up" aria-hidden="true"></span>
 				</a>
 				<!-- //move top icon -->
