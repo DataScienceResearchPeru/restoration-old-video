@@ -110,11 +110,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 						<!-- //search -->
 						<!-- download -->
-						<!-- 	
-						<a class="dwn-w3ls btn" href='#' target="_blank">
-							<span class="fa fa-cloud-download"></span>
-						</a>
-						 -->
+						
+						<button type="button" class="btn btn-warning">Ingresar</button>
+						<!-- <a class="dwn-w3ls btn" href='#' target="_blank">
+							<span>INGRESAR</span>
+							<span class="fa fa-cloud-download">Ingresar</span>
+						</a> -->
+						
 						<!-- //download -->
 					</div>
 				</div>
@@ -128,7 +130,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="my-video">
 					<div class="my-overlay"></div>
 					<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-						<source src="{% static '1/video/background2.mp4' %}" type="video/mp4">
+						<source src="{% static '1/video/background3.mp4' %}" type="video/mp4">
 					</video>
 					<div class="my-container h-100">
 						<div class="d-flex h-100 text-center align-items-center">
@@ -209,8 +211,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- services -->
 	<section class="banner-bottom-w3layouts bg-li py-5" id="services">
 		<div class="container py-xl-5 py-lg-3">
-			<h3 class="tittle text-center font-weight-bold">Nuestros servicios</h3>
-			<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">Optimiza tus videos antiguos, aumenta las dimensiones mejorando la calidad, coloriza tus videos, aumenta los frames de un video y mucho más. Apoya a DSRP.</p>
+			<h3 class="tittle text-center font-weight-bold">¿Qué hacemos?</h3>
+			<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">Optimizar tus videos antiguos aumentando las dimensiones mejorando la calidad, colorizando tus videos, aumentando los frames de un video y mucho más.</p>
 			<div class="row pt-lg-4">
 				<div class="col-lg-4 about-in text-center">
 					<div class="card">
@@ -260,14 +262,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-lg-6 about-right-faq">
 					<h6>DSRP</h6>
 					<h3 class="text-da">2 años de investigación</h3>
-					<p class="mt-4">[Descripción]</p>
-					<ul class="w3l-right-book mt-4">
+					<p class="mt-4">Nuestro grupo de trabajo interdisciplinario se ha sumergido en este sector especializado durante los últimos 2 años. Contamos con profesionales de primer nivel:</p>
+					<!-- <ul class="w3l-right-book mt-4">
 						<li>[-] Punto 1</li>
 						<li>[-] Punto 2</li>
 						<li>[-] Punto 3</li>
-						<li>[-] Punto 4</li>
-						<li>[-] Punto 5</li>
-					</ul>
+					</ul> -->
 					<a href="#about" class="btn button-style button-style-2 mt-sm-5 mt-4">Leer
 						más</a>
 				</div>
@@ -392,13 +392,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">En el campo de la inteligencia artificial los
 					cambios son cada vez más frecuentes, registra tu correo aquí debajo para estar al tanto de nuestra
 					plataforma.</p>
-				<form action="#" method="post" class="subscribe-wthree pt-2">
-					<div class="d-flex subscribe-wthree-field">
-						<input class="form-control" type="email" placeholder="Ingresa tu correo" name="email"
-							required="">
-						<button class="btn form-control w-50" type="submit">Quiero recibir actualizaciones!</button>
-					</div>
-				</form>
+				<!-- <form action="#" method="post" class="subscribe-wthree pt-2"> -->
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Quiero recibir actualizaciones" aria-label="Quiero recibir actualizaciones" aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button type="button" class="btn btn-warning">Suscribeme!</button>
+						</div>
+					  </div>
+				<!-- </form> -->
 			</div>
 			<!-- //subscribe -->
 		</div>
