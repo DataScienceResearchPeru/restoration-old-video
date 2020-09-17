@@ -26,7 +26,7 @@ from .views import signup
 
 # Pages
 from .views import index_view
-
+from .views import dashboard_view
 # Oauth
 
 
@@ -44,7 +44,7 @@ urlpatterns = [
     # path('pdp/', pdp_view, name='pdp'),
     # ------------------FIN INDEX------------------
     # -----------------INICIO DASHBOARD----------------
-    # path('dashboard/', dashboard_view, name='dashboard-view'),
+    path('dashboard/', dashboard_view, name='dashboard-view'),
     # path('dashboard/estadisticas_a_detalle/alertas_emitidas/', alertas_emitidas_view, name='alertas-detalle-view'),
     # path('dashboard/estadisticas_a_detalle/lista_dispositivos_operativos/', lista_dispositivos_operativos_view, name='lista-dispositivos-operativos-view'),    
     # path('dashboard/personal/', informacion_tiempo_real_view, name='informacion-tiempo-real-view'),

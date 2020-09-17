@@ -1,0 +1,190 @@
+{% load static %}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Restauración Videos - DSRP</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords"
+		content="Página dedicada a la restauración de videos usando técnicas open-source de deep-learning. Sube tu video a la plataforma, espera unas horas y listo!, tendrás tu video restaurado." />
+
+	<!-- //Meta tag Keywords -->
+
+	<!-- Custom-Files -->
+
+	<!-- Bootstrap-Core-CSS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+	</script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+	</script>
+
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="{% static '1/plugins/style.css' %}" type="text/css" media="all" />
+	<!-- Font-Awesome-Icons-CSS -->
+	<script src="https://kit.fontawesome.com/11f42b3956.js" crossorigin="anonymous"></script>
+	<!-- //Custom-Files -->
+
+	<!-- Web-Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext"
+		rel="stylesheet">
+	<!-- //Web-Fonts -->
+
+	{% block cabecera %}
+
+	{% endblock %}
+</head>
+
+<body>
+	<!-- main banner -->
+	<div class="main-top" id="home">
+		<!-- header -->
+		<header>
+			<div class="container-fluid">
+				<div class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
+					<!-- logo -->
+					<div id="logo">
+						<h1><a href="#">RVA<span class="fa fa-video"></span>DSRP</a></h1>
+					</div>
+					<!-- //logo -->
+					<!-- nav -->
+					<div class="nav_w3ls">
+						<nav>
+							<label for="drop" class="toggle">Menu</label>
+							<input type="checkbox" id="drop" />
+							<ul class="menu">
+								<li><a href="#index" class="active">Dashboard</a></li>
+								<li><a href="https://www.datascience.pe/">Nosotros</a></li>
+								<!-- <li><a href="#pricing">Planes</a></li> -->
+								<!-- First Tier Drop Down -->
+								<!-- <li>
+									
+									<label for="drop-2" class="toggle toogle-2">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span>
+									</label>
+									<a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+									<input type="checkbox" id="drop-2" />
+									<ul>
+										<li><a href=" {% static '1/#services' %}" class="drop-text">Services</a></li>
+										<li><a href=" {% static '1/faq.html' %}" class="drop-text">Faq's</a></li>
+										<li><a href=" {% static '1/404.html' %}" class="drop-text">404</a></li>
+										<li><a href=" {% static '1/#stats' %}" class="drop-text">Statistics</a></li>
+										<li><a href=" {% static '1/about.html' %}" class="drop-text">Why Choose Us?</a></li>
+										<li><a href=" {% static '1/about.html' %}" class="drop-text">Our Team</a></li>
+										<li><a href=" {% static '1/#partners' %}" class="drop-text">Partners</a></li>
+									</ul>
+								</li> -->
+								<!-- <li><a href="#">Contáctanos</a></li> -->
+							</ul>
+						</nav>
+					</div>
+					<!-- //nav -->
+					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
+						<!-- search -->
+
+						<!-- 
+						<div class="search-w3layouts mr-3">
+							<form action="#" method="post" class="search-bottom-wthree d-flex">
+								<input class="search" type="search" placeholder="Buscar aquí..." required="">
+								<button class="form-control btn" type="submit"><i class="fas fa-search"></i></button>
+							</form>
+						</div>
+						-->
+
+						<!-- //search -->
+						<!-- download -->
+
+						<button type="button" class="btn btn-warning">Ingresar</button>
+						<!-- 
+						<a class="dwn-w3ls btn" href='#' target="_blank">
+							<span>INGRESAR</span>
+							<span class="fa fa-cloud-download">Ingresar</span>
+						</a> 
+						--> 
+						<!-- //download -->
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- //header -->
+
+	</div>
+	<!-- //main banner -->
+
+	{% block contenido %}
+
+	{% endblock %}
+
+
+
+
+	<!-- copyright bottom -->
+	<div class="copy-bottom bg-li py-4 border-top">
+		<div class="container-fluid">
+			<div class="d-md-flex px-md-3 position-relative text-center">
+				<!-- footer social icons -->
+				<div class="social-icons-footer mb-md-0 mb-3">
+					<ul class="list-unstyled">
+						<li>
+							<a href="#">
+								<span class="fa fa-facebook"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="fa fa-twitter"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="fa fa-google-plus"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="fa fa-instagram"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //footer social icons -->
+				<!-- copyright -->
+				<div class="copy_right mx-md-auto mb-md-0 mb-3">
+					<p class="text-bl let">© 2020 ROV - DSRP | Design by <a href='http://w3layouts.com/'
+							target="_blank">W3layouts</a>
+					</p>
+				</div>
+				<!-- //copyright -->
+				<!-- move top icon -->
+				<a href="#home" class="move-top text-center">
+					<span class="fa fa-level-up" aria-hidden="true"></span>
+				</a>
+				<!-- //move top icon -->
+			</div>
+		</div>
+	</div>
+	<!-- //copyright bottom -->
+
+	{% block pie %}
+
+	{% endblock %}
+</body>
+
+</html>
