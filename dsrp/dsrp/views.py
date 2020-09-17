@@ -49,7 +49,7 @@ from rest_framework.response import Response
 # from .models import AuthtokenToken
 # from .models import AuthUser
 # from .models import ApiMedicKitPerUser
-# from .forms import SignUpForm
+from .forms import SignUpForm
 from django.contrib import messages
 
 ##########################################################
@@ -95,6 +95,11 @@ def index_view(request):
 # -------------------------- FIN INDEX -------------------
 
 # -------------------- INICIO DASHBOARD -----------------
+def dashboard_view(request):
+
+    # Variables de dashboard
+
+    return render(request, 'dashboard/pipeline/index.html',locals())
 
 # ----------------------- FIN DASHBOARD -----------------
 
