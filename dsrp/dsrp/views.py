@@ -60,8 +60,11 @@ from rest_framework.utils import json
 
 
 ##########################################################
-# ALLOW TWILIO
-# from twilio.rest import Client
+# ALLOW MONGODB
+import pymongo
+from pymongo import MongoClient
+from gridfs import GridFS
+from bson import objectid
 
 
 # ------------------------  INICIO LOGIN ------------------
@@ -95,11 +98,34 @@ def index_view(request):
 # -------------------------- FIN INDEX -------------------
 
 # -------------------- INICIO DASHBOARD -----------------
-def dashboard_view(request):
+
+@login_required(login_url='/accounts/login')
+def dashboard_upload_view(request):
+
+    # Variables de dashboard
+    try:
+        cluster_db = MongoClient(
+            "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/videos?retryWrites=true&w=majority").videos
+        print("client connected")
+
+        fs = GridFS(cluster_db, "uploaded_videos")
+        with open('dsrp/static/temp_upload/my_video_source.mp4', 'rb') as f:
+            uploaded_videos = fs.put(f.read(), content_type='video/mp4', filename='my_video_source.mp4', encoding='utf-8')
+        
+        print("File uploaded")
+
+    except Exception as e:
+        print(e)
+
+    return render(request, 'dashboard/pipeline/upload.html', locals())
+
+@login_required(login_url='/accounts/login')
+def dashboard_status_view(request):
 
     # Variables de dashboard
 
-    return render(request, 'dashboard/pipeline/index.html',locals())
+    return render(request, 'dashboard/pipeline/status.html', locals())
+
 
 # ----------------------- FIN DASHBOARD -----------------
 

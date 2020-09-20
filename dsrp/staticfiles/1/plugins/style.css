@@ -1676,7 +1676,7 @@ div .my-overlay {
 
 @media (pointer: coarse) and (hover: none) {
     div .my-video {
-        background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+        background: url('../video/background-preview.png') black no-repeat center center scroll;
     }
 
     div video {
