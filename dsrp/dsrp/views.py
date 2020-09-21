@@ -192,8 +192,8 @@ def handle_uploaded_file(f, codigo, current_user_id):
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
         "-"+str(current_user_id)+"-" + f.name
     
-    if not os.path.isdir(temp_file_dir):
-        os.mkdir(temp_file_dir)
+    if not os.path.isdir('dsrp/static/temp_upload/'):
+        os.mkdir('dsrp/static/temp_upload/')
 
     with open(temp_file_dir, 'wb+') as destination:
         for chunk in f.chunks():
