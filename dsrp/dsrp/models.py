@@ -11,16 +11,14 @@ from django.db import models
 
 # CLASS HYPERTABLE IN APP API
 
-# class ApiMedicKitPerUser(models.Model):
-#     kit_id = models.TextField(primary_key=True)
+# class VideoPerUser(models.Model):
+#     file_name = models.TextField(primary_key=True)
 #     user = models.ForeignKey('AuthUser', models.DO_NOTHING)
-#     estado_comunicacion = models.TextField(blank=True, null=True)  # This field type is a guess.
-#     estado_baterias = models.TextField(blank=True, null=True)  # This field type is a guess.
-#     tiempo_muestreo = models.TextField(blank=True, null=True)  # This field type is a guess.
+#     video_link = models.TextField(blank=True, null=True)
 
 #     class Meta:
 #         managed = False
-#         db_table = 'api_medic_kit_per_user'
+#         db_table = 'video_per_user'
 
 
 # class ApiMedicNotifications(models.Model):

@@ -1,8 +1,12 @@
+import ibm_boto3
+from ibm_botocore.client import Config
 from django.core import serializers
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 ###########################################################
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 ###########################################################
 
@@ -63,8 +67,83 @@ from rest_framework.utils import json
 # ALLOW MONGODB
 import pymongo
 from pymongo import MongoClient
-from gridfs import GridFS
 from bson import objectid
+from bson.objectid import ObjectId
+from datetime import datetime
+import pprint
+##################################
+from .forms import VideoForm
+
+
+# -------------------- INICIO CREDENTIALS -----------------
+
+credentials = {
+    'IAM_SERVICE_ID': 'iam-ServiceId-b426f19e-8df6-45b8-9c4d-37893e41f238',
+    'IBM_API_KEY_ID': '3aNvqt_qMzCDtV8pzuWTpE_ZCePUFP_ICel2L61caQfD',
+    'ENDPOINT': 'https://s3-api.us-geo.objectstorage.service.networklayer.com',
+    'IBM_AUTH_ENDPOINT': 'https://iam.cloud.ibm.com/oidc/token',
+    'BUCKET': 'dsrp-donotdelete-pr-dhxpvvck0joofu',
+    # 'FILE': 'frames_out.zip'
+}
+
+cos_credentials = {
+    "apikey": "zc4cz12_i6iTStQFwlTv0wxHphEEY8NVqNb6U4BY749o",
+    "endpoints": "https://control.cloud-object-storage.cloud.ibm.com/v2/endpoints",
+    "iam_apikey_description": "Auto-generated for key 160374f5-9c1f-4273-a772-0f787b4eb2da",
+    "iam_apikey_name": "rovdsrp",
+    "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+    "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/bf08352255e54408bc6145b47bf34ff9::serviceid:ServiceId-5f3686ab-205e-4c10-9f15-691a51f426eb",
+    "resource_instance_id": "crn:v1:bluemix:public:cloud-object-storage:global:a/bf08352255e54408bc6145b47bf34ff9:70cf7ab6-2002-456f-adff-87469270a801::"
+}
+
+auth_endpoint = 'https://iam.bluemix.net/oidc/token'
+service_endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
+cos = ibm_boto3.client('s3',
+                       ibm_api_key_id=cos_credentials['apikey'],
+                       ibm_service_instance_id=cos_credentials['resource_instance_id'],
+                       ibm_auth_endpoint=auth_endpoint,
+                       config=Config(signature_version='oauth'),
+                       endpoint_url=service_endpoint)
+
+
+def upload_file_cos(credentials, local_file_name, key):
+    cos = ibm_boto3.client(service_name='s3',
+                           ibm_api_key_id=credentials['IBM_API_KEY_ID'],
+                           ibm_service_instance_id=credentials['IAM_SERVICE_ID'],
+                           ibm_auth_endpoint=credentials['IBM_AUTH_ENDPOINT'],
+                           config=Config(signature_version='oauth'),
+                           endpoint_url=credentials['ENDPOINT'])
+    try:
+        res = cos.upload_file(Filename=local_file_name,
+                              Bucket=credentials['BUCKET'], Key=key)
+    except Exception as e:
+        print(Exception, e)
+    else:
+        print('File Uploaded')
+
+
+def download_file_cos(credentials, local_file_name, key):
+    cos = ibm_boto3.client(service_name='s3',
+                           ibm_api_key_id=credentials['IBM_API_KEY_ID'],
+                           ibm_service_instance_id=credentials['IAM_SERVICE_ID'],
+                           ibm_auth_endpoint=credentials['IBM_AUTH_ENDPOINT'],
+                           config=Config(signature_version='oauth'),
+                           endpoint_url=credentials['ENDPOINT'])
+    try:
+        res = cos.download_file(
+            Bucket=credentials['BUCKET'], Key=key, Filename=local_file_name)
+    except Exception as e:
+        print(Exception, e)
+    else:
+        print('File Downloaded')
+
+# cos.upload_file(Filename='results/frames_out_fastdvdnet.zip',Bucket=credentials['BUCKET'],Key='frames_out_fastdvdnet.zip')
+# cos.download_file(Bucket=credentials['BUCKET'],Key='frames_out.zip',Filename='frames_out.zip')
+
+
+def get_mongo_client():
+    return MongoClient("mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
+# -------------------- FIN CREDENTIALS -----------------
 
 
 # ------------------------  INICIO LOGIN ------------------
@@ -99,30 +178,100 @@ def index_view(request):
 
 # -------------------- INICIO DASHBOARD -----------------
 
+
+def handle_uploaded_file(f, codigo, current_user_id):
+
+    temp_file_dir= 'dsrp/static/temp_upload/' + \
+        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+        "-"+str(current_user_id)+"-" + f.name
+
+    static_file_dir = '/temp_upload/' + \
+        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+        "-"+str(current_user_id)+"-" + f.name
+
+    with open(temp_file_dir, 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+    name_file_cos = str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+        "-"+str(current_user_id)+"-"+codigo + '.mp4'
+
+
+    cos.upload_file(Filename=temp_file_dir,
+                    Bucket=credentials['BUCKET'], Key=name_file_cos)
+
+    print("File uploaded to IBM COS")
+
+    client = MongoClient(
+        "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
+    db = client.galeria
+    collection = db.videos
+
+    data = {'current_user_id': str(current_user_id),
+            'filename_temp': str(temp_file_dir),
+            'filename_cos': str(name_file_cos),
+            'static_file_dir':str(static_file_dir),
+            }
+    print(data)
+
+    collection.insert_one(data)
+
+
+@csrf_exempt
 @login_required(login_url='/accounts/login')
+@permission_classes((AllowAny,))
 def dashboard_upload_view(request):
 
-    # Variables de dashboard
-    try:
-        cluster_db = MongoClient(
-            "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/videos?retryWrites=true&w=majority").videos
-        print("client connected")
+    if request.method == "POST":
 
-        fs = GridFS(cluster_db, "uploaded_videos")
-        with open('dsrp/static/temp_upload/my_video_source.mp4', 'rb') as f:
-            uploaded_videos = fs.put(f.read(), content_type='video/mp4', filename='my_video_source.mp4', encoding='utf-8')
-        
-        print("File uploaded")
+        video = VideoForm(request.POST, request.FILES)
+        if video.is_valid():
+            current_user_id = request.user.id
+            handle_uploaded_file(
+                request.FILES['video'], request.POST.get('codigo'), current_user_id)
+            print("File uploaded successfuly")
+            HttpResponse("File uploaded successfuly")
+            return redirect('../status/')
 
-    except Exception as e:
-        print(e)
+    else:
+        video = VideoForm()
+        return render(request, 'dashboard/pipeline/upload.html', {'form': video})
 
-    return render(request, 'dashboard/pipeline/upload.html', locals())
 
 @login_required(login_url='/accounts/login')
 def dashboard_status_view(request):
 
+
+    current_user_id = request.user.id
     # Variables de dashboard
+   
+    client = MongoClient(
+    "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
+    db = client.galeria
+    collection = db.videos
+
+    # files=collection.find({'current_user_id':current_user_id})
+    # # GET FILE ID
+    # print("GETTING FILE ID")
+    list_filename_temp=[]
+    x=0
+    for vid in collection.find({'current_user_id':str(current_user_id)}):
+        if x==0:
+            list_filename_temp.append(vid['static_file_dir'])
+        x+=1
+    
+    
+
+    # list_filename_temp
+
+    # # GET CHUNKS OF THE FILE WITH ID
+    # print("GET CHUNKS OF THAT FILE")
+    # files_id = ObjectId('5f67ee7920bfdaf148938ccd')
+    # thefile = []
+    # for chunk in cluster_db['uploaded_videos']['chunks'].find({"files_id": files_id}):
+    #     thefile.append(chunk['data'])
+    #     pprint.pprint(chunk['_id'])
+
 
     return render(request, 'dashboard/pipeline/status.html', locals())
 

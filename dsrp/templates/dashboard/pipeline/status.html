@@ -9,7 +9,23 @@
 <!-- services -->
 <section class="banner-bottom-w3layouts bg-li py-5" id="services">
 	<div class="container py-xl-5 py-lg-3">
-		<h3 class="tittle text-center font-weight-bold">Elige los procesos</h3>
+		<h4 class="tittle text-center font-weight-bold">Último video subido</h4>
+		<hr>
+		<br>
+		{% for filename_temp in list_filename_temp %}
+
+		
+		<div class="embed-responsive embed-responsive-16by9">
+			<video controls>
+				<!-- <source src=”http://techslides.com/demos/sample-videos/small.ogv” type=video/ogg> -->
+				<source src="{% static filename_temp %}" type=video/mp4>
+			</video>
+			<!-- <iframe class="embed-responsive-item" src="{% static filename_temp %}"></iframe>			 -->
+		</div>
+		{% endfor %}
+
+		<hr>
+		<br>
 		<form>
 			<div class="form-group">
 				<label for="exampleFormControlSelect1">N° 1</label>
@@ -17,56 +33,6 @@
 					<option>Opción 1</option>
 					<option>Opción 2</option>
 					<option>Opción 3</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlSelect1">N° 2</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					<option>Opción 1</option>
-					<option>Opción 2</option>
-					<option>Opción 3</option>
-					<option>Opción 4</option>
-					<option>Opción 5</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlSelect1">N° 3</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					<option>Opción 1</option>
-					<option>Opción 2</option>
-					<option>Opción 3</option>
-					<option>Opción 4</option>
-					<option>Opción 5</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlSelect1">N° 4</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					<option>Opción 1</option>
-					<option>Opción 2</option>
-					<option>Opción 3</option>
-					<option>Opción 4</option>
-					<option>Opción 5</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlSelect1">N° 5</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					<option>Opción 1</option>
-					<option>Opción 2</option>
-					<option>Opción 3</option>
-					<option>Opción 4</option>
-					<option>Opción 5</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlSelect1">N° 6</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					<option>Opción 1</option>
-					<option>Opción 2</option>
-					<option>Opción 3</option>
-					<option>Opción 4</option>
-					<option>Opción 5</option>
 				</select>
 			</div>
 
