@@ -73,6 +73,7 @@ from datetime import datetime
 import pprint
 ##################################
 from .forms import VideoForm
+import os
 
 
 # -------------------- INICIO CREDENTIALS -----------------
@@ -188,6 +189,7 @@ def handle_uploaded_file(f, codigo, current_user_id):
     static_file_dir = '/temp_upload/' + \
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
         "-"+str(current_user_id)+"-" + f.name
+    
 
     with open(temp_file_dir, 'wb+') as destination:
         for chunk in f.chunks():
