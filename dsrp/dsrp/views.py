@@ -182,6 +182,8 @@ def index_view(request):
 
 def handle_uploaded_file(f, codigo, current_user_id):
 
+    
+
     temp_file_dir= 'dsrp/static/temp_upload/' + \
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
         "-"+str(current_user_id)+"-" + f.name
@@ -190,6 +192,8 @@ def handle_uploaded_file(f, codigo, current_user_id):
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
         "-"+str(current_user_id)+"-" + f.name
     
+    if not os.path.isdir(temp_file_dir):
+        os.mkdir(temp_file_dir)
 
     with open(temp_file_dir, 'wb+') as destination:
         for chunk in f.chunks():
