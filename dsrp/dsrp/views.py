@@ -292,9 +292,11 @@ def dashboard_status_view(request):
 @login_required(login_url='/accounts/login')
 def dashboard_utils_view(request):
 
-    mypath='./'
-    myCmd = 'ls -la'
-    listoffiles=subprocess.check_output(myCmd)
+    myCmd = "ls"
+    listoffiles=str(subprocess.check_output(myCmd, shell=True).decode("utf-8"))
+
+    myCmd2 = "ls ../"
+    listoffiles2=str(subprocess.check_output(myCmd2, shell=True).decode("utf-8"))
     # listoffiles = str([f for f in os.listdir(mypath) if os.path.isfile(f)])
 
     return render(request, 'dashboard/pipeline/utils.html', locals())
