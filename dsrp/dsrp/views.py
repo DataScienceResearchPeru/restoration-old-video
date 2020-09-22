@@ -183,21 +183,15 @@ def index_view(request):
 
 def handle_uploaded_file(f, codigo, current_user_id):
 
-    temp_file_dir = 'dsrp/static/temp_upload/' + \
-        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
-        "-"+str(current_user_id)+"-" + f.name
-
-    temp_file_dir2 = 'static/temp_upload/' + \
-        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
-        "-"+str(current_user_id)+"-" + f.name
-
-    static_file_dir = '/temp_upload/' + \
-        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
-        "-"+str(current_user_id)+"-" + f.name
-
-    # if not os.path.isdir('dsrp/static/temp_upload/'):
-    #     os.mkdir('dsrp/static/temp_upload/')
     try:
+        temp_file_dir = 'dsrp/static/temp_upload/' + \
+            str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+            "-"+str(current_user_id)+"-" + f.name
+
+        static_file_dir = '/temp_upload/' + \
+            str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+            "-"+str(current_user_id)+"-" + f.name
+
         with open(temp_file_dir, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
@@ -211,7 +205,15 @@ def handle_uploaded_file(f, codigo, current_user_id):
         print("File uploaded to IBM COS")
 
     except Exception as e:  # Exclusive for Heroku
-        
+
+        temp_file_dir2 = 'static/temp_upload/' + \
+            str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+            "-"+str(current_user_id)+"-" + f.name
+
+        static_file_dir2 = '/temp_upload/' + \
+            str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+            "-"+str(current_user_id)+"-" + f.name
+
         with open(temp_file_dir2, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
@@ -223,8 +225,6 @@ def handle_uploaded_file(f, codigo, current_user_id):
                         Bucket=credentials['BUCKET'], Key=name_file_cos)
 
         print("File uploaded to IBM COS")
-        
-
 
     client = MongoClient(
         "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
@@ -235,7 +235,7 @@ def handle_uploaded_file(f, codigo, current_user_id):
             'filename_temp': str(temp_file_dir),
             'filename_cos': str(name_file_cos),
             'static_file_dir': str(static_file_dir),
-            'temp_file_dir2':str(temp_file_dir2),
+            'temp_file_dir2': str(temp_file_dir2),
             }
     print(data)
 
@@ -282,7 +282,11 @@ def dashboard_status_view(request):
     # for myvid in myvideos:
     #     list_filename_temp.append(myvideos['static_file_dir'])
 
-    list_filename_temp.append(myvideos[0]['static_file_dir'])
+    try:
+        list_filename_temp.append(myvideos[-1]['static_file_dir'])
+    except:
+        list_filename_temp.append(myvideos[0]['static_file_dir'])
+
 
     # list_filename_temp
 
@@ -294,33 +298,36 @@ def dashboard_status_view(request):
     #     thefile.append(chunk['data'])
     #     pprint.pprint(chunk['_id'])
 
-    path='./'
+    path = './'
 
     return render(request, 'dashboard/pipeline/status.html', locals())
-
 
 
 @login_required(login_url='/accounts/login')
 def dashboard_utils_view(request):
 
     myCmd = "ls"
-    listoffiles=str(subprocess.check_output(myCmd, shell=True).decode("utf-8"))
+    listoffiles = str(subprocess.check_output(
+        myCmd, shell=True).decode("utf-8"))
 
     myCmd2 = "ls ../"
-    listoffiles2=str(subprocess.check_output(myCmd2, shell=True).decode("utf-8"))
+    listoffiles2 = str(subprocess.check_output(
+        myCmd2, shell=True).decode("utf-8"))
 
     try:
         myCmd3 = "ls ./static/"
-        listoffiles3=str(subprocess.check_output(myCmd3, shell=True).decode("utf-8"))
+        listoffiles3 = str(subprocess.check_output(
+            myCmd3, shell=True).decode("utf-8"))
     except Exception as e:
-        listoffiles3=str(e)
+        listoffiles3 = str(e)
         print(e)
-    
+
     try:
         myCmd4 = "ls ./static/temp_upload/"
-        listoffiles4=str(subprocess.check_output(myCmd4, shell=True).decode("utf-8"))
+        listoffiles4 = str(subprocess.check_output(
+            myCmd4, shell=True).decode("utf-8"))
     except Exception as e:
-        listoffiles4=str(e)
+        listoffiles4 = str(e)
         print(e)
 
     return render(request, 'dashboard/pipeline/utils.html', locals())
