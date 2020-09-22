@@ -74,6 +74,7 @@ import pprint
 ##################################
 from .forms import VideoForm
 import os
+import subprocess
 
 
 # -------------------- INICIO CREDENTIALS -----------------
@@ -291,9 +292,10 @@ def dashboard_status_view(request):
 @login_required(login_url='/accounts/login')
 def dashboard_utils_view(request):
 
-    path='./'
-    abs_path=os.path.dirname(os.path.abspath(__file__))
-    listoffiles = str([f for f in os.listdir(path) if os.path.isfile(f)])
+    mypath='./'
+    myCmd = 'ls -la'
+    listoffiles=subprocess.check_output(myCmd)
+    # listoffiles = str([f for f in os.listdir(mypath) if os.path.isfile(f)])
 
     return render(request, 'dashboard/pipeline/utils.html', locals())
 
