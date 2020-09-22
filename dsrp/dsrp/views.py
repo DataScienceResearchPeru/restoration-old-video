@@ -182,11 +182,11 @@ def index_view(request):
 
 def handle_uploaded_file(f, codigo, current_user_id):
 
-    # temp_file_dir = 'dsrp/static/temp_upload/' + \
-    #     str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
-    #     "-"+str(current_user_id)+"-" + f.name
+    temp_file_dir = 'dsrp/static/temp_upload/' + \
+        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+        "-"+str(current_user_id)+"-" + f.name
 
-    temp_file_dir = f.name
+    # temp_file_dir = f.name
 
     static_file_dir = '/temp_upload/' + \
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
