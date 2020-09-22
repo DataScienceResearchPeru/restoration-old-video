@@ -186,7 +186,9 @@ def handle_uploaded_file(f, codigo, current_user_id):
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
         "-"+str(current_user_id)+"-" + f.name
 
-    # temp_file_dir = f.name
+    temp_file_dir2 = 'static/temp_upload/' + \
+        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+        "-"+str(current_user_id)+"-" + f.name
 
     static_file_dir = '/temp_upload/' + \
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
@@ -198,8 +200,9 @@ def handle_uploaded_file(f, codigo, current_user_id):
         with open(temp_file_dir, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
+
     except Exception as e:  # Exclusive for Heroku
-        with open('app/'+temp_file_dir, 'wb+') as destination:
+        with open(temp_file_dir2, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
 
