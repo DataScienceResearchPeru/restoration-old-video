@@ -282,8 +282,20 @@ def dashboard_status_view(request):
     #     thefile.append(chunk['data'])
     #     pprint.pprint(chunk['_id'])
 
+    path='./'
+
     return render(request, 'dashboard/pipeline/status.html', locals())
 
+
+
+@login_required(login_url='/accounts/login')
+def dashboard_utils_view(request):
+
+    path='./'
+    abs_path=os.path.dirname(os.path.abspath(__file__))
+    listoffiles = str([f for f in os.listdir(path) if os.path.isfile(f)])
+
+    return render(request, 'dashboard/pipeline/utils.html', locals())
 
 # ----------------------- FIN DASHBOARD -----------------
 
