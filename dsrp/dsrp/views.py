@@ -202,18 +202,29 @@ def handle_uploaded_file(f, codigo, current_user_id):
             for chunk in f.chunks():
                 destination.write(chunk)
 
+        name_file_cos = str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+            "-"+str(current_user_id)+"-"+codigo + '.mp4'
+
+        cos.upload_file(Filename=temp_file_dir,
+                        Bucket=credentials['BUCKET'], Key=name_file_cos)
+
+        print("File uploaded to IBM COS")
+
     except Exception as e:  # Exclusive for Heroku
+        
         with open(temp_file_dir2, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
 
-    name_file_cos = str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
-        "-"+str(current_user_id)+"-"+codigo + '.mp4'
+        name_file_cos = str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+            "-"+str(current_user_id)+"-"+codigo + '.mp4'
 
-    cos.upload_file(Filename=temp_file_dir,
-                    Bucket=credentials['BUCKET'], Key=name_file_cos)
+        cos.upload_file(Filename=temp_file_dir2,
+                        Bucket=credentials['BUCKET'], Key=name_file_cos)
 
-    print("File uploaded to IBM COS")
+        print("File uploaded to IBM COS")
+        
+
 
     client = MongoClient(
         "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
