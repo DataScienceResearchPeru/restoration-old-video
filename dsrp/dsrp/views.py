@@ -183,6 +183,13 @@ def index_view(request):
 
 def handle_uploaded_file(f, codigo, current_user_id):
 
+    current_user_id=current_user_id
+    filename_temp=''
+    filename_cos=''
+    static_file_dir=''
+    temp_file_dir2=''
+    static_file_dir2=''
+
     try:
         temp_file_dir = 'dsrp/static/temp_upload/' + \
             str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
@@ -236,6 +243,7 @@ def handle_uploaded_file(f, codigo, current_user_id):
             'filename_cos': str(name_file_cos),
             'static_file_dir': str(static_file_dir),
             'temp_file_dir2': str(temp_file_dir2),
+            'static_file_dir2':str(static_file_dir2),
             }
     print(data)
 
@@ -266,27 +274,22 @@ def dashboard_upload_view(request):
 @login_required(login_url='/accounts/login')
 def dashboard_status_view(request):
 
-    current_user_id = request.user.id
     # Variables de dashboard
-
-    client = MongoClient(
-        "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
+    user_name= str(request.user.username)
+    client = MongoClient("mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
     db = client.galeria
     collection = db.videos
 
-    # files=collection.find({'current_user_id':current_user_id})
-    # # GET FILE ID
-    # print("GETTING FILE ID")
     list_filename_temp = []
+    current_user_id = request.user.id
     myvideos = collection.find({'current_user_id': str(current_user_id)})
-    # for myvid in myvideos:
-    #     list_filename_temp.append(myvideos['static_file_dir'])
 
+    for myvid in myvideos:
+        list_filename_temp.append(myvid['static_file_dir'])
     try:
-        list_filename_temp.append(myvideos[-1]['static_file_dir'])
-    except:
-        list_filename_temp.append(myvideos[0]['static_file_dir'])
-
+        last_video=list_filename_temp[-1]
+    except Exception as e:
+        last_video=str(e)
 
     # list_filename_temp
 
@@ -297,8 +300,6 @@ def dashboard_status_view(request):
     # for chunk in cluster_db['uploaded_videos']['chunks'].find({"files_id": files_id}):
     #     thefile.append(chunk['data'])
     #     pprint.pprint(chunk['_id'])
-
-    path = './'
 
     return render(request, 'dashboard/pipeline/status.html', locals())
 

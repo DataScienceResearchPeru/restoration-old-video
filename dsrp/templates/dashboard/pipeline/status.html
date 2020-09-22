@@ -11,17 +11,13 @@
 	<div class="container py-xl-5 py-lg-3">
 		<h4 class="tittle text-center font-weight-bold">Último video subido</h4>
 		<hr>
-		{% for filename_temp in list_filename_temp %}
 		<div class="embed-responsive embed-responsive-16by9">
-			<!-- <video controls> -->
-			<!-- <source src=”http://techslides.com/demos/sample-videos/small.ogv” type=video/ogg> -->
-			<!-- <source src="{% static filename_temp %}" type=video/mp4> -->
-			<iframe class="embed-responsive-item" src="{% static filename_temp %}"></iframe>
+			<iframe class="embed-responsive-item" src="{% static last_video %}"></iframe>
 		</div>
-		{% endfor %}
 		<hr>
 		<br>
-		<form>
+		<form method="POST" class="post-form" enctype="multipart/form-data">
+			{% csrf_token %}
 			<div class="form-group">
 				<label for="exampleFormControlSelect1">N° 1</label>
 				<select class="form-control" id="exampleFormControlSelect1">
@@ -30,9 +26,8 @@
 					<option>Opción 3</option>
 				</select>
 			</div>
-
+			<button type="submit" class="save btn btn-warning">Subir video</button>
 		</form>
-		<button type="button" class="btn btn-secondary">Enviar</button>
 	</div>
 </section>
 <!-- //services -->
