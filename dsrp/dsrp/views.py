@@ -198,8 +198,8 @@ def handle_uploaded_file(f, codigo, current_user_id):
         with open(temp_file_dir, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
-    except Exception as e: # Exclusive for Heroku
-        with open('/app/'+temp_file_dir, 'wb+') as destination:
+    except Exception as e:  # Exclusive for Heroku
+        with open('app/'+temp_file_dir, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
 
@@ -262,11 +262,11 @@ def dashboard_status_view(request):
     # # GET FILE ID
     # print("GETTING FILE ID")
     list_filename_temp = []
-    x = 0
-    for vid in collection.find({'current_user_id': str(current_user_id)}):
-        if x == 0:
-            list_filename_temp.append(vid['static_file_dir'])
-        x += 1
+    myvideos = collection.find({'current_user_id': str(current_user_id)})
+    # for myvid in myvideos:
+    #     list_filename_temp.append(myvideos['static_file_dir'])
+
+    list_filename_temp.append(myvideos[0]['static_file_dir'])
 
     # list_filename_temp
 
