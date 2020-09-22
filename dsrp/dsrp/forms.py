@@ -41,3 +41,18 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name',
                   'email', 'password1', 'password2', ]
+
+
+def validate_file_extension(value):
+    import os
+    from django.core.exceptions import ValidationError
+    ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
+    valid_extensions = ['.mp4',
+                        #'.avi',
+                        ]
+    if not ext.lower() in valid_extensions:
+        raise ValidationError('Unsupported file extension.')
+
+class VideoForm(forms.Form):
+    codigo = forms.CharField(label="Codigo", max_length=100)
+    video = forms.FileField(label="Video",validators=[validate_file_extension])  # for creating file input

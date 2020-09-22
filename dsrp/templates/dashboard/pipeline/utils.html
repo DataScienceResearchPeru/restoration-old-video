@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block cabecera %}
+{% endblock cabecera %}
+
+{% block contenido %}
+<!-- services -->
+<section class="banner-bottom-w3layouts bg-li py-5" id="services">
+	<div class="container py-xl-5 py-lg-3">
+		<h4 class="tittle text-center font-weight-bold">Utils</h4>
+		<hr>
+		<!-- <h5>Path</h5>
+		<p>			
+            {{ mypath }}
+		</p>  -->
+		<h5>List of files in root</h5>
+
+		{{ listoffiles }}<br>
+
+		<hr>
+		<h5>List of files in parent of a root</h5>
+
+		{{ listoffiles2 }}<br>
+
+		<hr>
+		*If something is error remember to run manage.py instead of dsrp/manage.py
+		<hr>
+		
+		<h5>List of files in static</h5>
+
+		{{ listoffiles3 }}<br>
+
+		
+		<hr>
+
+		<h5>List of files in static/temp_upload/</h5>
+
+		{{ listoffiles4 }}<br>
+
+		<hr>
+
+	</div>
+</section>
+<!-- //services -->
+{% endblock contenido %}
+
+{% block pie %}
+{% endblock pie %}

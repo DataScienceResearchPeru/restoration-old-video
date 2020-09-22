@@ -1,0 +1,29 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block cabecera %}
+{% endblock cabecera %}
+
+{% block contenido %}
+<!-- services -->
+<section class="banner-bottom-w3layouts bg-li py-5" id="services">
+	<div class="container py-xl-5 py-lg-3">
+		<h4 class="tittle text-center font-weight-bold">Selecciona el video (.mp4)</h4>
+		<hr>
+		<br>
+		<form method="POST" class="post-form" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<hr>
+			<br>
+			<h6>*Recuerda memorizar tu codigo</h6><br>
+			<button type="submit" class="save btn btn-warning">Subir video</button>
+		</form>
+	</div>
+</section>
+<!-- //services -->
+{% endblock contenido %}
+
+{% block pie %}
+{% endblock pie %}

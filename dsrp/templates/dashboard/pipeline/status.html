@@ -1,0 +1,38 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block cabecera %}
+{% endblock cabecera %}
+
+{% block contenido %}
+<!-- services -->
+<section class="banner-bottom-w3layouts bg-li py-5" id="services">
+	<div class="container py-xl-5 py-lg-3">
+		<h4 class="tittle text-center font-weight-bold">Último video subido</h4>
+		<hr>
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="{% static last_video %}"></iframe>
+		</div>
+		<hr>
+		<br>
+		<h4 class="tittle text-center font-weight-bold">Último video subido</h4>
+		<form method="POST" class="post-form" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">N° 1</label>
+				<select class="form-control" id="exampleFormControlSelect1">
+					<option>Opción 1</option>
+					<option>Opción 2</option>
+					<option>Opción 3</option>
+				</select>
+			</div>
+			<button type="submit" class="save btn btn-warning">Subir video</button>
+		</form>
+	</div>
+</section>
+<!-- //services -->
+{% endblock contenido %}
+
+{% block pie %}
+{% endblock pie %}
