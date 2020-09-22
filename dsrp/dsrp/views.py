@@ -297,7 +297,20 @@ def dashboard_utils_view(request):
 
     myCmd2 = "ls ../"
     listoffiles2=str(subprocess.check_output(myCmd2, shell=True).decode("utf-8"))
-    # listoffiles = str([f for f in os.listdir(mypath) if os.path.isfile(f)])
+
+    try:
+        myCmd3 = "ls ./static/"
+        listoffiles3=str(subprocess.check_output(myCmd3, shell=True).decode("utf-8"))
+    except Exception as e:
+        listoffiles3=str(e)
+        print(e)
+    
+    try:
+        myCmd4 = "ls ./static/temp_upload/"
+        listoffiles4=str(subprocess.check_output(myCmd4, shell=True).decode("utf-8"))
+    except Exception as e:
+        listoffiles4=str(e)
+        print(e)
 
     return render(request, 'dashboard/pipeline/utils.html', locals())
 
