@@ -57,3 +57,4 @@ venv.bak/
 # Temporal files uploaded
 #dsrp/static/temp_upload/*.mp4
 *.mp4
+dsrp/staticfiles/*
