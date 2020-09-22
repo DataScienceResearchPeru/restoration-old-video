@@ -182,26 +182,29 @@ def index_view(request):
 
 def handle_uploaded_file(f, codigo, current_user_id):
 
-    
+    # temp_file_dir = 'dsrp/static/temp_upload/' + \
+    #     str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
+    #     "-"+str(current_user_id)+"-" + f.name
 
-    temp_file_dir= 'dsrp/static/temp_upload/' + \
-        str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
-        "-"+str(current_user_id)+"-" + f.name
+    temp_file_dir = f.name
 
     static_file_dir = '/temp_upload/' + \
         str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
         "-"+str(current_user_id)+"-" + f.name
-    
-    if not os.path.isdir('dsrp/static/temp_upload/'):
-        os.mkdir('dsrp/static/temp_upload/')
 
-    with open(temp_file_dir, 'wb+') as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
+    # if not os.path.isdir('dsrp/static/temp_upload/'):
+    #     os.mkdir('dsrp/static/temp_upload/')
+    try:
+        with open(temp_file_dir, 'wb+') as destination:
+            for chunk in f.chunks():
+                destination.write(chunk)
+    except Exception as e: # Exclusive for Heroku
+        with open('/app/'+temp_file_dir, 'wb+') as destination:
+            for chunk in f.chunks():
+                destination.write(chunk)
 
     name_file_cos = str(datetime.now().strftime('%Y%m%d%H%M%S')) + \
         "-"+str(current_user_id)+"-"+codigo + '.mp4'
-
 
     cos.upload_file(Filename=temp_file_dir,
                     Bucket=credentials['BUCKET'], Key=name_file_cos)
@@ -216,7 +219,7 @@ def handle_uploaded_file(f, codigo, current_user_id):
     data = {'current_user_id': str(current_user_id),
             'filename_temp': str(temp_file_dir),
             'filename_cos': str(name_file_cos),
-            'static_file_dir':str(static_file_dir),
+            'static_file_dir': str(static_file_dir),
             }
     print(data)
 
@@ -241,32 +244,29 @@ def dashboard_upload_view(request):
 
     else:
         video = VideoForm()
-        return render(request, 'dashboard/pipeline/upload.html', {'form': video,'user_name':str(request.user.username)})
+        return render(request, 'dashboard/pipeline/upload.html', {'form': video, 'user_name': str(request.user.username)})
 
 
 @login_required(login_url='/accounts/login')
 def dashboard_status_view(request):
 
-
     current_user_id = request.user.id
     # Variables de dashboard
-   
+
     client = MongoClient(
-    "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
+        "mongodb+srv://dsrpbetamongodb:dsrpbetamongodb@cluster0.ko3xv.gcp.mongodb.net/galeria?retryWrites=true&w=majority")
     db = client.galeria
     collection = db.videos
 
     # files=collection.find({'current_user_id':current_user_id})
     # # GET FILE ID
     # print("GETTING FILE ID")
-    list_filename_temp=[]
-    x=0
-    for vid in collection.find({'current_user_id':str(current_user_id)}):
-        if x==0:
+    list_filename_temp = []
+    x = 0
+    for vid in collection.find({'current_user_id': str(current_user_id)}):
+        if x == 0:
             list_filename_temp.append(vid['static_file_dir'])
-        x+=1
-    
-    
+        x += 1
 
     # list_filename_temp
 
@@ -277,7 +277,6 @@ def dashboard_status_view(request):
     # for chunk in cluster_db['uploaded_videos']['chunks'].find({"files_id": files_id}):
     #     thefile.append(chunk['data'])
     #     pprint.pprint(chunk['_id'])
-
 
     return render(request, 'dashboard/pipeline/status.html', locals())
 
