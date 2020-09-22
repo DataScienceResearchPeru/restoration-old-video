@@ -241,7 +241,7 @@ def dashboard_upload_view(request):
 
     else:
         video = VideoForm()
-        return render(request, 'dashboard/pipeline/upload.html', {'form': video})
+        return render(request, 'dashboard/pipeline/upload.html', {'form': video,'user_name':str(request.user.username)})
 
 
 @login_required(login_url='/accounts/login')
