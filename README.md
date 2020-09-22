@@ -42,41 +42,19 @@
 Techniques already implemented:
 
 ### 1. Upscaling
+| Model                     | 1                  | 2                 | 3    | 4 |
+|---------------------------|--------------------|-------------------|------|-------------|
+| Upscaling                 | [TecoGAN](https://github.com/ZurMaD/TecoGAN) | [USRNet](https://github.com/ZurMaD/USRNet)| - |  |
+| Denoising                 | [FastDVDNet](https://github.com/ZurMaD/fastdvdnet) | - | - | |
+| Video Frame Interpolation | [RRIN](https://github.com/ZurMaD/RRIN) | [Softmax-splatting](https://github.com/ZurMaD/softmax-splatting) | [DAIN](https://github.com/ZurMaD/DAIN) | [Super-SloMo](https://github.com/ZurMaD/Super-SloMo) |
+| Deblur                    | [USRNet](https://github.com/ZurMaD/USRNet) | - | - | |
+| Video Prediction          | - | - | - | |
+| Colorizer                 | [DeOldify](https://github.com/ZurMaD/DeOldify) | - | - | |
+| Deflicker                 | [Deflickering](https://github.com/ZurMaD/deflickering) | - | -    | |
+| Stabilizer                | - | - | - | |
+| Face Restoration          | [DFDNet](https://github.com/csxmli2016/DFDNet) | - | - | |
+| Improve Speech Audio      | [Speech Enhancement](https://github.com/ZurMaD/Speech-enhancement) | [DNP](https://github.com/ZurMaD/DNP) | - | |
 
-- TecoGAN
-- USRNet
-
-### 2. Denoising
-
-- Fastdvdnet
-- 
-
-### 3. Video Frame interpolation
-
-- DAIN
-- RRIN
-
-### 4. Deblur
-
-- USRNet
-
-### 5. Video prediction
-
-### 6. Colorizer
-
-- Deoldify
-
-### 7. Deflickering
-
-- Libraries based on ffmpeg, without AI.
-
-### 8. Stabilizer
-
-### 9. Face restoration
-
-- https://github.com/csxmli2016/DFDNet
-
-### 10. Improve speech on audio
 
 
 <!-- What is ROVDSRP? -->
