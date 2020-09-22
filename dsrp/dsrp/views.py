@@ -202,7 +202,7 @@ def handle_uploaded_file(f, codigo, current_user_id):
                 destination.write(chunk)
 
     except Exception as e:  # Exclusive for Heroku
-        with open(temp_file_dir2, 'wb+') as destination:
+        with open('app/'+temp_file_dir2, 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
 
@@ -223,6 +223,7 @@ def handle_uploaded_file(f, codigo, current_user_id):
             'filename_temp': str(temp_file_dir),
             'filename_cos': str(name_file_cos),
             'static_file_dir': str(static_file_dir),
+            'temp_file_dir2':str(temp_file_dir2),
             }
     print(data)
 
