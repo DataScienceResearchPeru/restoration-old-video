@@ -55,4 +55,4 @@ venv.bak/
 *.ipynb 
 
 # Temporal files uploaded
-dsrp/static/temp_upload/*
+#dsrp/static/temp_upload/*.mp4
