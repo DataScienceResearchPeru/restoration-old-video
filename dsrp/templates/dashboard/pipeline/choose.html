@@ -1,0 +1,163 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block cabecera %}
+
+<!-- https://videojs.com/getting-started -->
+<!-- Style-CSS -->
+<link rel="stylesheet" href="{% static '1/plugins/videojs/video-js.min.css' %}" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static '1/plugins/videojs/fantasy/index.css' %}" type="text/css" media="all" />
+
+<!-- Switch Bootstrap 4 -->
+<link rel="stylesheet" href="{% static '1/plugins/switch-bootstrap4/bootstrap-switch-button.min.css' %}" type="text/css"
+	media="all" />
+
+<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<!-- //Reproductor de video/audio -->
+{% endblock cabecera %}
+
+{% block contenido %}
+<!-- services -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 mx-auto">
+			<br><br>
+			<h4 class="tittle text-center font-weight-bold">Último video subido</h4>
+			<hr>
+			<div class="container embed-responsive embed-responsive-16by9">
+				<video id="my-player" class="video-js vjs-theme-fantasy embed-responsive-item" controls preload="auto"
+					height="100%" data-setup="{}">
+					<!-- poster="MY_VIDEO_POSTER.jpg" -->
+					<source src="{% static last_video %}" type="video/mp4" />
+					<!-- <source src="MY_VIDEO.webm" type="video/webm" /> -->
+					<p class="vjs-no-js">
+						To view this video please enable JavaScript, and consider upgrading to a
+						web browser that
+						<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+					</p>
+				</video>
+			</div>
+			<div class="container row">
+				<div class="col-6">
+					<button type="button" class="btn btn-warning col mx-auto">Subir nuevo
+						<strong>video</strong></button>
+				</div>
+				<div class="col-6">
+					<button type="button" class="btn btn-warning col mx-auto">Elegir otro
+						<strong>video</strong></button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<hr>
+	<br>
+	<div class="row ">
+		<div class="col-md-8 mx-auto">
+			<h4 class="tittle text-center font-weight-bold">Elige los métodos de recuperación</h4>
+			<br>
+			<div class="p-3 mb-2 bg-secondary text-white rounded">
+				<form method="POST" class="post-form" enctype="multipart/form-data">
+					{% csrf_token %}
+					{% for row in myjson %}
+					<div class="form-group">
+						{% if "(NO)" in row.A %}
+						{% else %}
+						{% if "-" in row.A %}
+						{% else %}
+						<label for="formGroupExampleInput">
+							<h4>{{ row.Model }}</h4>
+						</label>
+						<p></p>
+						{% if row.A != "" %}
+						{% if "NO" in row.A %}
+						{% else %}
+						<div class="p-3 mb-2 bg-dark text-white rounded">
+							<input type="checkbox" data-toggle="switchbutton" data-width="50" data-onstyle="warning"
+								name='rov' value="{{row.A|cut:'(OK) '}}" />
+							<label class="align-middle" for="customSwitch {{row.A|cut:'(OK) '}}">
+								<h6>{{ row.A|cut:'(OK)' }}</h6>
+							</label>
+						</div>
+						{% endif %}
+						{% endif %}
+						{% if row.B != "" %}
+						{% if "NO" in row.B %}
+						{% else %}
+						<div class="p-3 mb-2 bg-dark text-white rounded">
+							<input type="checkbox" data-toggle="switchbutton" data-width="50" data-onstyle="warning"
+								name='rov' value="{{row.B|cut:'(OK) '}}" />
+							<label class="align-middle" for="customSwitch {{row.B|cut:'(OK) '}}">
+								<h6>{{ row.B|cut:'(OK)' }}</h6>
+							</label>
+						</div>
+						{% endif %}
+						{% endif %}
+						{% if row.C != "" %}
+						{% if "NO" in row.C %}
+						{% else %}
+						<div class="p-3 mb-2 bg-dark text-white rounded">
+							<input type="checkbox" data-toggle="switchbutton" data-width="50" data-onstyle="warning"
+								name='rov' value="{{row.C|cut:'(OK) '}}" />
+							<label class="align-middle" for="customSwitch {{row.C|cut:'(OK) '}}">
+								<h6>{{ row.C|cut:'(OK)' }}</h6>
+							</label>
+						</div>
+						{% endif %}
+						{% endif %}
+						{% if row.D != "" %}
+						{% if "NO" in row.D %}
+						{% else %}
+						<div class="p-3 mb-2 bg-dark text-white rounded">
+							<input type="checkbox" data-toggle="switchbutton" data-width="50" data-onstyle="warning"
+								name='rov' value="{{row.D|cut:'(OK) '}}" />
+							<label class="align-middle" for="customSwitch {{row.D|cut:'(OK) '}}">
+								<h6>{{ row.D|cut:'(OK)' }}</h6>
+							</label>
+						</div>
+						{% endif %}
+						{% endif %}
+						{% endif %}
+						{% endif %}
+					</div>
+					{% endfor %}
+					<div>
+						*Escoge solo uno por sección.<br>
+					</div>
+					<div>
+						<button id="generar" type="submit" class="save btn btn-warning">Generar y Ejecutar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- //services -->
+{% endblock contenido %}
+
+{% block pie %}
+
+<!-- Reproductor audio/video -->
+<script src="{% static '1/plugins/videojs/video.js' %}"></script>
+
+<!--javascript cdn-->
+<script src="{% static '1/plugins/switch-bootstrap4/bootstrap-switch-button.min.js' %}">
+</script>
+
+<!-- Switch toggle  -->
+<script>
+	$(document).ready(function () {
+		$("#generar").click(function () {
+			var redes_aplicar = [];
+			$.each($("input[name='rov']:checked"), function () {
+				redes_aplicar.push($(this).val());
+			});
+			alert("Secuencia generada (No en ese orden): " + redes_aplicar.join(", "));
+		});
+	});
+</script>
+
+{% endblock pie %}

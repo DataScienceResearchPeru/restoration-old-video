@@ -27,7 +27,10 @@ from .views import signup
 # Pages
 from .views import index_view
 from .views import dashboard_upload_view
+from .views import dashboard_choose_view
 from .views import dashboard_status_view
+from .views import dashboard_results_view
+
 from .views import dashboard_utils_view
 # Oauth
 
@@ -47,7 +50,9 @@ urlpatterns = [
     # ------------------FIN INDEX------------------
     # -----------------INICIO DASHBOARD----------------
     path('dashboard/upload/', dashboard_upload_view, name='dashboard-upload-view'),
+    path('dashboard/choose/', dashboard_choose_view, name='dashboard-choose-view'),
     path('dashboard/status/', dashboard_status_view, name='dashboard-status-view'),
+    path('dashboard/results/', dashboard_results_view, name='dashboard-results-view'),
     path('dashboard/utils/', dashboard_utils_view, name='dashboard-utils-view'),
     
     # path('dashboard/estadisticas_a_detalle/alertas_emitidas/', alertas_emitidas_view, name='alertas-detalle-view'),
