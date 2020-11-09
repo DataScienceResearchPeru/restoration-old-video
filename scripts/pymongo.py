@@ -13,5 +13,5 @@ client = MongoClient(key_3)
 db = client.galeria
 collection = db.videos
 
-pprint.pprint(collection.find_one({"current_user_id": "2"}))
+pprint.pprint(collection.find_one({"current_user_id": "2"})) # get the last video of one user by its id
 
