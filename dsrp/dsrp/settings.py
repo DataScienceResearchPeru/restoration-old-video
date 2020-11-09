@@ -99,17 +99,17 @@ WSGI_APPLICATION = 'dsrp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': str(os.environ.get('DB_ENGINE')),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': str(os.environ.get('DB_NAME')),
         'USER': str(os.environ.get('DB_USER')),
         'PASSWORD': str(os.environ.get('DB_PASSWORD')),
         'HOST': str(os.environ.get('DB_HOST')),
         'PORT': str(os.environ.get('DB_PORT')),
     },
-    'sqlite': {  # sqlite
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # 'sqlite': {  # sqlite
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
