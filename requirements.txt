@@ -12,7 +12,9 @@ django-rest-framework-social-oauth2==1.1.0
 pymongo==3.11.0
 pymongo[srv]
 dnspython==1.16.0
+boto3==1.14.47
+botocore==1.17.47 
 ibm-cos-sdk==2.7.0
 ibm-cos-sdk-core==2.7.0
 ibm-cos-sdk-s3transfer==2.7.0
-numpy
+numpy==1.19.0
