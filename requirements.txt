@@ -15,3 +15,4 @@ dnspython==1.16.0
 ibm-cos-sdk==2.7.0
 ibm-cos-sdk-core==2.7.0
 ibm-cos-sdk-s3transfer==2.7.0
+numpy
