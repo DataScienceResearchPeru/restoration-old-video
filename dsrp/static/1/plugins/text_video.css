@@ -1,0 +1,54 @@
+
+/* //responsive */
+
+
+div .my-video {
+    position: relative;
+    background-color: black;
+    height: 75vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+div video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+div .my-container {
+    position: relative;
+    z-index: 2;
+}
+
+div .my-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+    div .my-video {
+        background: url('../video/background-preview.png') black no-repeat center center scroll;
+    }
+
+    div video {
+        display: none;
+    }
+}
+

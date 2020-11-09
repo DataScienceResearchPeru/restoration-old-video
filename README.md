@@ -41,7 +41,8 @@
 
 Techniques already implemented:
 
-### 1. Upscaling
+### Models
+
 | Model                     | 1                  | 2                 | 3    | 4 |
 |---------------------------|--------------------|-------------------|------|-------------|
 | Upscaling                 | [TecoGAN](https://github.com/ZurMaD/TecoGAN) | [USRNet](https://github.com/ZurMaD/USRNet)| - |  |
@@ -55,6 +56,21 @@ Techniques already implemented:
 | Face Restoration          | [DFDNet](https://github.com/csxmli2016/DFDNet) | - | - | |
 | Improve Speech Audio      | [Speech Enhancement](https://github.com/ZurMaD/Speech-enhancement) | [DNP](https://github.com/ZurMaD/DNP) | - | |
 
+
+### Models webpage
+
+| Model                     | A                          | B                         | C           | D                   |
+|---------------------------|----------------------------|---------------------------|-------------|---------------------|
+| Upscaling                 | \(OK\) TecoGAN             | \(NO\) USRNet             |             |                     |
+| Denoising                 | \(OK\) FastDVDNet          |                           |             |                     |
+| Video Frame Interpolation | \(OK\) RRIN                | \(NO\) Softmax\-splatting | \(NO\) DAIN | \(NO\) Super\-SloMo |
+| Deblur                    | \(NO\) USRNet              |                           |             |                     |
+| Colorizer                 | \(OK\) DeOldify            |                           |             |                     |
+| Deflicker                 | \(OK\) Deflickering        |                           |             |                     |
+| Stabilizer                | \-                         |                           |             |                     |
+| Face Restoration          | \(NO\) DFDNet              |                           |             |                     |
+| Improve Speech Audio      | \(OK\) Speech Enhancement  | \(OK\) DNP                |             |                     |
+| Video Prediction          | \-                         |                           |             |                     |
 
 
 <!-- What is ROVDSRP? -->

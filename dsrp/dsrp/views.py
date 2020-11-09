@@ -76,16 +76,20 @@ from .forms import VideoForm
 import os
 import subprocess
 
-from .cr3d import key_1,key_2,key_3
+##################################
+import numpy as np
+
 
 # -------------------- INICIO CREDENTIALS -----------------
+from .credentials import *
 
 credentials = key_1
-
 cos_credentials = key_2
 
-auth_endpoint = 'https://iam.bluemix.net/oidc/token'
-service_endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
+auth_endpoint = str(os.environ.get('IBM_AUTH_ENDPOINT'))
+service_endpoint = str(os.environ.get('SERVICE_ENDPOINT'))
+
+
 cos = ibm_boto3.client('s3',
                        ibm_api_key_id=cos_credentials['apikey'],
                        ibm_service_instance_id=cos_credentials['resource_instance_id'],
@@ -166,12 +170,12 @@ def index_view(request):
 
 def handle_uploaded_file(f, codigo, current_user_id):
 
-    current_user_id=current_user_id
-    filename_temp=''
-    filename_cos=''
-    static_file_dir=''
-    temp_file_dir2=''
-    static_file_dir2=''
+    current_user_id = current_user_id
+    filename_temp = ''
+    filename_cos = ''
+    static_file_dir = ''
+    temp_file_dir2 = ''
+    static_file_dir2 = ''
 
     try:
         temp_file_dir = 'dsrp/static/temp_upload/' + \
@@ -225,7 +229,13 @@ def handle_uploaded_file(f, codigo, current_user_id):
             'filename_cos': str(name_file_cos),
             'static_file_dir': str(static_file_dir),
             'temp_file_dir2': str(temp_file_dir2),
-            'static_file_dir2':str(static_file_dir2),
+            'static_file_dir2': str(static_file_dir2),
+            'models': {'processing_sequence': ['FastDVDNet', 'RRIN', 'DeOldify', 'Deflickering', 'Speech Enhancement'],
+                       # Can be priority also
+                       'order_sequence': [1, 3, 2, 0, 4],
+                       'status': 'Creating/Running/Completed/Failed/Rechazed',
+                       'download_links': {'0': '0'},
+                       }
             }
     print(data)
 
@@ -246,44 +256,98 @@ def dashboard_upload_view(request):
                 request.FILES['video'], request.POST.get('codigo'), current_user_id)
             print("File uploaded successfuly")
             HttpResponse("File uploaded successfuly")
-            return redirect('../status/')
+            return redirect('../choose/')
 
-    else:
+    elif request.method == "GET":
         video = VideoForm()
         return render(request, 'dashboard/pipeline/upload.html', {'form': video, 'user_name': str(request.user.username)})
 
 
 @login_required(login_url='/accounts/login')
+def dashboard_choose_view(request):
+
+    if request.method == "POST":
+
+        return redirect('../status/')
+
+        # video = VideoForm(request.POST, request.FILES)
+        # if video.is_valid():
+        #     current_user_id = request.user.id
+        #     handle_uploaded_file(request.FILES['video'], request.POST.get('codigo'), current_user_id)
+        #     print("File uploaded successfuly")
+        #     HttpResponse("File uploaded successfuly")
+        #     return redirect('../choose/')
+
+    elif request.method == "GET":
+        # Variables de dashboard
+        user_name = str(request.user.username)
+        client = MongoClient(key_3)
+        db = client.galeria
+        collection = db.videos
+
+        list_filename_temp = []
+        current_user_id = request.user.id
+        myvideos = collection.find({'current_user_id': str(current_user_id)})
+
+        for myvid in myvideos:
+            list_filename_temp.append(myvid['static_file_dir'])
+        try:
+            last_video = list_filename_temp[-1]
+        except Exception as e:
+            last_video = str(e)
+
+        # list_filename_temp
+
+        # # GET CHUNKS OF THE FILE WITH ID
+        # print("GET CHUNKS OF THAT FILE")
+        # files_id = ObjectId('5f67ee7920bfdaf148938ccd')
+        # thefile = []
+        # for chunk in cluster_db['uploaded_videos']['chunks'].find({"files_id": files_id}):
+        #     thefile.append(chunk['data'])
+        #     pprint.pprint(chunk['_id'])
+
+        with open("models.json", encoding='utf-8', errors='ignore') as json_data:
+            myjson = json.load(json_data, strict=False)
+
+        return render(request, 'dashboard/pipeline/choose.html', locals())
+
+
+@login_required(login_url='/accounts/login')
 def dashboard_status_view(request):
 
-    # Variables de dashboard
-    user_name= str(request.user.username)
-    client = MongoClient(key_3)
-    db = client.galeria
-    collection = db.videos
+    if request.method == "POST":
 
-    list_filename_temp = []
-    current_user_id = request.user.id
-    myvideos = collection.find({'current_user_id': str(current_user_id)})
+        return redirect('../results/')
 
-    for myvid in myvideos:
-        list_filename_temp.append(myvid['static_file_dir'])
-    try:
-        last_video=list_filename_temp[-1]
-    except Exception as e:
-        last_video=str(e)
+    elif request.method == "GET":
 
-    # list_filename_temp
+        client = MongoClient(key_3)
+        db = client.galeria
+        collection = db.videos
+        user_id = str(request.user.id)
+        lista_videos = collection.find_one({"current_user_id": str(user_id)})
+        array_results = [lista_videos['models']['order_sequence'],
+                        lista_videos['models']['processing_sequence'],
+                         ['Cargando...']*len(lista_videos['models']['order_sequence'])]
+        array_results = np.array(array_results).T
 
-    # # GET CHUNKS OF THE FILE WITH ID
-    # print("GET CHUNKS OF THAT FILE")
-    # files_id = ObjectId('5f67ee7920bfdaf148938ccd')
-    # thefile = []
-    # for chunk in cluster_db['uploaded_videos']['chunks'].find({"files_id": files_id}):
-    #     thefile.append(chunk['data'])
-    #     pprint.pprint(chunk['_id'])
+        user_name = str(request.user.username)
 
-    return render(request, 'dashboard/pipeline/status.html', locals())
+        return render(request, 'dashboard/pipeline/status.html', locals())
+
+
+@login_required(login_url='/accounts/login')
+def dashboard_results_view(request):
+
+    if request.method == "POST":
+        pass
+        # return redirect('../results/')
+
+    elif request.method == "GET":
+
+        user_name = str(request.user.username)
+
+        return render(request, 'dashboard/pipeline/results.html', locals())
 
 
 @login_required(login_url='/accounts/login')

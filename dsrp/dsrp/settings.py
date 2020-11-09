@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x9q@12a24zmsirgqqyxx%c04%j&3_$yy1uf&j10*7sd(zvsh+c'
+SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,11 +47,11 @@ INSTALLED_APPS = [
     # API
     'api.apps.ApiConfig',
     'rest_framework',
-    #OAUTH
-    'rest_framework.authtoken', #LOGIN
-    'oauth2_provider', #OAUTH
-    'social_django', #OAUTH
-    'rest_framework_social_oauth2', #OAUTH
+    # OAUTH
+    'rest_framework.authtoken',  # LOGIN
+    'oauth2_provider',  # OAUTH
+    'social_django',  # OAUTH
+    'rest_framework_social_oauth2',  # OAUTH
 ]
 
 MIDDLEWARE = [
@@ -65,7 +65,7 @@ MIDDLEWARE = [
     # Heroku
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-#### IFRAME
+# IFRAME
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 ####
 
@@ -83,7 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #OAUTH
+                # OAUTH
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
@@ -99,14 +99,14 @@ WSGI_APPLICATION = 'dsrp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dabgr417fji4fp',
-        'USER': 'eefjhsmgczjuuo',
-        'PASSWORD': '8b4b4a96d5fa6cb887425cfea33de91650508766b814eed31b9c079a4ec20d57',
-        'HOST': 'ec2-54-172-173-58.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': str(os.environ.get('DB_ENGINE')),
+        'NAME': str(os.environ.get('DB_NAME')),
+        'USER': str(os.environ.get('DB_USER')),
+        'PASSWORD': str(os.environ.get('DB_PASSWORD')),
+        'HOST': str(os.environ.get('DB_HOST')),
+        'PORT': str(os.environ.get('DB_PORT')),
     },
-    'sqlite': { #sqlite
+    'sqlite': {  # sqlite
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -120,24 +120,25 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',        
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         # 'rest_framework.authentication.TokenAuthentication', #LOGIN
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.permissions.IsAuthenticated',  #LOGIN
-        'rest_framework.authentication.BasicAuthentication',  #LOGIN
-        'rest_framework.authentication.SessionAuthentication',  #LOGIN
+        'rest_framework.authentication.BasicAuthentication',  # LOGIN
+        'rest_framework.authentication.SessionAuthentication',  # LOGIN
         # 'rest_framework.authentication.TokenAuthentication',  #LOGIN
         # 'oauth2_provider.ext.rest_framework.OAuth2Authentication',  # django-oauth-toolkit < 1.0.0 #OAUTH
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  # django-oauth-toolkit >= 1.0.0 #OAUTH
-        'rest_framework_social_oauth2.authentication.SocialAuthentication', #OAUTH
+        # django-oauth-toolkit >= 1.0.0 #OAUTH
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',  # OAUTH
     ],
 }
 
 AUTHENTICATION_BACKENDS = (
     # OAUTH
-   'rest_framework_social_oauth2.backends.DjangoOAuth2',
-   'django.contrib.auth.backends.ModelBackend',
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 
@@ -189,7 +190,6 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = '/dashboard'
 LOGOUT_REDIRECT_URL = '/accounts/login'
-
 
 
 os.environ["DJANGO_SETTINGS_MODULE"] = "dsrp.settings"

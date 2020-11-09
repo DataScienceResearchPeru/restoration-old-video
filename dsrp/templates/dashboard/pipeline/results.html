@@ -24,30 +24,9 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <br><br>
-            <h4 class="tittle text-center font-weight-bold">Estado del procesamiento</h4>
+            <h4 class="tittle text-center font-weight-bold">Descarga los resultados</h4>
             <hr>
-            <div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Prioridad</th>
-                            <th scope="col">Modelo a aplicar</th>
-                            <th scope="col">Estado actual</th>
-                        </tr>
-                    </thead>
-                    {% for rowval in array_results %}
-                    <tr>
-                        {% for val in rowval %}
-                        <td>{{val}}</td>
-                        {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-            <hr>
-            <div>
-                *Cuando todo haya finalizado haz <a href='../results/'> clic aquí</a>
-            </div>
+
         </div>
     </div>
     <hr>
@@ -66,8 +45,6 @@
 <!--javascript cdn-->
 <script src="{% static '1/plugins/switch-bootstrap4/bootstrap-switch-button.min.js' %}">
 </script>
-
-<!-- Switch toggle  -->
 
 
 {% endblock pie %}

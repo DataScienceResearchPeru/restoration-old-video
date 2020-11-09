@@ -1,0 +1,12 @@
+[
+    {"Model":"Upscaling","A":"(OK) TecoGAN ","B":"(NO) USRNet","C":"","D":""},
+    {"Model":"Denoising","A":"(OK) FastDVDNet ","B":"","C":"","D":""},
+    {"Model":"Video Frame Interpolation","A":"(OK) RRIN ","B":"(NO) Softmax-splatting","C":"(NO) DAIN","D":"(NO) Super-SloMo"},
+    {"Model":"Deblur","A":"(NO) USRNet ","B":"","C":"","D":""},
+    {"Model":"Colorizer","A":"(OK) DeOldify ","B":"","C":"","D":""},
+    {"Model":"Deflicker","A":"(OK) Deflickering ","B":"","C":"","D":""},
+    {"Model":"Stabilizer","A":"-","B":"","C":"","D":""},
+    {"Model":"Face Restoration","A":"(NO) DFDNet ","B":"","C":"","D":""},
+    {"Model":"Improve Speech Audio","A":"(OK) Speech Enhancement ","B":"(OK) DNP ","C":"","D":""},
+    {"Model":"Video Prediction","A":"-","B":"","C":"","D":""}
+]
